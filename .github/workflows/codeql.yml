@@ -66,6 +66,7 @@ jobs:
 
       run: |
        echo "Run, Build Application using script"
+       npm install
        npm run start
 
     - name: Perform CodeQL Analysis
