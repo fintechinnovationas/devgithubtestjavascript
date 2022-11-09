@@ -1,4 +1,4 @@
-FROM node:7.7-alpine
+FROM node:latest
 
 # install deps
 RUN cd /tmp && npm install
