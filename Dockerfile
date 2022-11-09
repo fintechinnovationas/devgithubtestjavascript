@@ -1,10 +1,11 @@
 FROM node:latest
 
 # install deps
+ADD package.json /tmp/package.json
 RUN cd /tmp && npm install
 
 # Copy deps
-ADD package.json /tmp/package.json
+
 RUN mkdir -p /opt/hello-world-app && cp -a /tmp/node_modules /opt/hello-world-app
 
 # Setup workdir
