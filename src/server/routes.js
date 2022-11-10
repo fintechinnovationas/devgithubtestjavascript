@@ -1,5 +1,6 @@
 var router = require('express').Router();
 var four0four = require('./utils/404')();
+var escape = require('escape-html');
 var data = require('./data');
 data.profile = {};
 
@@ -26,7 +27,7 @@ function search(req, res, next) {
 
     // For demo purposes we're just going to send back the search term received
     console.log(req.query.searchTerm);
-    res.status(200).send(req.query.searchTerm);
+    res.status(200).send(escape(req.query.searchTerm));
 }
 
 function getProfile(req, res, next) {
