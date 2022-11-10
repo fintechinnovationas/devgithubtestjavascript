@@ -11,14 +11,8 @@
 # https://github.com/anchore/grype
 name: Anchore Grype vulnerability scan
 
-on:
-  push:
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "main" ]
-  schedule:
-    - cron: '36 7 * * 6'
-
+on: [push, pull_request]
+ 
 permissions:
   contents: read
 
@@ -35,8 +29,9 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag localbuild/testimage:latest
     - name: Run the Anchore Grype scan action
-      uses: anchore/scan-action@d5aa5b6cb9414b0c7771438046ff5bcfa2854ed7
+      uses: anchore/scan-action@v3.3.1
       id: scan
+      continue-on-error: true
       with:
         image: "localbuild/testimage:latest"
         fail-build: true
