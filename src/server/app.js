@@ -6,6 +6,8 @@ var app = express();
 app.disable('x-powered-by');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var csrf = require("csurf");
+var passport = require("passport");
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var port = process.env.PORT || 8001;
@@ -17,6 +19,8 @@ app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(passport.authorize({ session: true }));
+app.use(csrf({ cookie: true }));
 app.use(logger('dev'));
 
 app.use('/api', require('./routes'));
