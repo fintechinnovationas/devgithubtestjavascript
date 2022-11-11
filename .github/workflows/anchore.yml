@@ -11,7 +11,7 @@
 # https://github.com/anchore/grype
 name: Anchore Grype vulnerability scan
 
-on: [push, pull_request]
+on: [pull_request]
  
 permissions:
   contents: read
