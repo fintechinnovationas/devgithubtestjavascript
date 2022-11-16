@@ -1,4 +1,4 @@
-FROM alpine:3.12.12
+FROM alpine:3.16.3
 
 # install deps
 
